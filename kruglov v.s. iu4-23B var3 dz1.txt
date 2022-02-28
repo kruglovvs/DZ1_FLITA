@@ -19,13 +19,14 @@ unsigned int to_dec(unsigned int bin){/*переводит десятичное 
   return (dec);
 }
 void print_mas(unsigned int bin_mas[], unsigned int dec_mas[]){/*выводит таблицу чисел из 2 массивов*/
+  int row_len = find_max_len(bin_mas);
   for (int i=0; i<COUNT; i++){
-    printf("%0*i  %i\n",find_max_len(bin_mas),bin_mas[i],dec_mas[i]);
+    printf("%0*i -> %i\n",row_len,bin_mas[i],dec_mas[i]);
   }
 }
 int find_max_len(unsigned int bin_mas[]){/*находит максимальную длину максимального двоичного числа для красивого вывода*/
   unsigned int max = bin_mas[0];
-  unsigned short int max_len = 1;
+  int max_len = 0;
   for (int i=1; i<COUNT; i++){
     if (max<bin_mas[i]){
       max = bin_mas[i];
@@ -38,7 +39,7 @@ int find_max_len(unsigned int bin_mas[]){/*находит максимальну
   return(max_len);
 }
 int main(){
-  const unsigned int bin_mas[] = MAS;
+  unsigned int bin_mas[] = MAS;
   unsigned int dec_mas[COUNT];
   for (int i=0; i<COUNT; i++){
     dec_mas[i] = to_dec(bin_mas[i]);
