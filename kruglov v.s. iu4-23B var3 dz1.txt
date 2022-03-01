@@ -3,8 +3,6 @@
 ДЗ №1*/
 
 #include <stdio.h>
-#define COUNT 2
-
 unsigned int to_dec(unsigned int bin){/*переводит десятичное число в двоичное*/
   unsigned int dec = 0;
   unsigned int degree = 1;
@@ -15,10 +13,10 @@ unsigned int to_dec(unsigned int bin){/*переводит десятичное 
   }
   return (dec);
 }
-int find_max_len(unsigned int bin_mas[]){/*находит максимальную длину максимального двоичного числа для красивого вывода*/
+int find_max_len(unsigned int bin_mas[],int count){/*находит максимальную длину максимального двоичного числа для красивого вывода*/
   unsigned int max = bin_mas[0];
   int max_len = 0;
-  for (int i=1; i<COUNT; i++){
+  for (int i=1; i<count; i++){
     if (max<bin_mas[i]){
       max = bin_mas[i];
     }
@@ -29,21 +27,27 @@ int find_max_len(unsigned int bin_mas[]){/*находит максимальну
   }
   return(max_len);
 }
-void print_mas(unsigned int bin_mas[], unsigned int dec_mas[]){/*выводит таблицу чисел из 2 массивов*/
-  int row_len = find_max_len(bin_mas);
-  for (int i=0; i<COUNT; i++){
+void print_mas(unsigned int bin_mas[], unsigned int dec_mas[], int count){/*выводит таблицу чисел из 2 массивов*/
+  int row_len = find_max_len(bin_mas,count);
+  for (int i=0; i<count; i++){
     printf("%0*i -> %i\n",row_len,bin_mas[i],dec_mas[i]);
   }
 }
 int main(){
-  unsigned int bin_mas[COUNT];
-  for (int i=0; i<COUNT; i++){
+  int count;
+  printf("ввод количества чисел: ");
+  scanf("%d",&count);
+  printf("ввод двоичных чисел:\n");
+  unsigned int bin_mas[count];
+  /*ввод двоичных чисел*/
+  for (int i=0; i<count; i++){
     scanf("%d",&bin_mas[i]);
   }
-  unsigned int dec_mas[COUNT];
-  for (int i=0; i<COUNT; i++){
+  unsigned int dec_mas[count];
+  for (int i=0; i<count; i++){
     dec_mas[i] = to_dec(bin_mas[i]);
   }
   printf("\nвывод таблицы:\n");
-  print_mas(bin_mas,dec_mas);
+  print_mas(bin_mas,dec_mas,count);
+  return(0);
 }
