@@ -3,10 +3,7 @@
 ДЗ №1*/
 
 #include <stdio.h>
-#define MAS {0,1,11110,11,100,101,11111110,111,1000,100001,1001}
-#define COUNT 11 /*возможно сделать через const sizeof(MAS)
-        const int bin_mas[] = MAS;
-        const int count = sizeof(mas [])/sizeof(mas[0]);*/
+#define COUNT 2
 
 unsigned int to_dec(unsigned int bin){/*переводит десятичное число в двоичное*/
   unsigned int dec = 0;
@@ -39,10 +36,14 @@ void print_mas(unsigned int bin_mas[], unsigned int dec_mas[]){/*выводит 
   }
 }
 int main(){
-  unsigned int bin_mas[] = MAS;
+  unsigned int bin_mas[COUNT];
+  for (int i=0; i<COUNT; i++){
+    scanf("%d",&bin_mas[i]);
+  }
   unsigned int dec_mas[COUNT];
   for (int i=0; i<COUNT; i++){
     dec_mas[i] = to_dec(bin_mas[i]);
   }
+  printf("\nвывод таблицы:\n");
   print_mas(bin_mas,dec_mas);
 }
