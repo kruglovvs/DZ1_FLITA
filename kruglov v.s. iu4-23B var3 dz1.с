@@ -1,8 +1,5 @@
-/*Круглов В.С. ИУ4-23Б
-вариант 3 
-ДЗ №1*/
-
 #include <stdio.h>
+
 unsigned int to_dec(unsigned int bin){/*переводит десятичное число в двоичное*/
   unsigned int dec = 0;
   unsigned int degree = 1;
@@ -35,19 +32,19 @@ void print_mas(unsigned int bin_mas[], unsigned int dec_mas[], int count){/*вы
 }
 int main(){
   int count;
-  printf("ввод количества чисел: ");
+  printf("input count of numbers: ");
   scanf("%d",&count);
-  printf("ввод двоичных чисел:\n");
-  unsigned int bin_mas[count];
+  printf("input numbers:\n");
+  unsigned int *bin_mas = (unsigned int*) malloc(count+1);
   /*ввод двоичных чисел*/
   for (int i=0; i<count; i++){
     scanf("%d",&bin_mas[i]);
   }
-  unsigned int dec_mas[count];
+  unsigned int *dec_mas = (unsigned int*) malloc(count+1);
   for (int i=0; i<count; i++){
     dec_mas[i] = to_dec(bin_mas[i]);
   }
-  printf("\nвывод таблицы:\n");
+  printf("\noutput a table:\n");
   print_mas(bin_mas,dec_mas,count);
   return(0);
 }
